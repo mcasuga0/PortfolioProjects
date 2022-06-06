@@ -140,6 +140,31 @@ WHERE
 
 ORDER BY
   1,2
+  
+    ## Date, Population and Newly Vaccinated
+    
+SELECT
+  deaths.continent,
+  deaths.location,
+  deaths.date,
+  deaths.population,
+  vaccinations.new_vaccinations
+
+FROM
+
+  `sorting-with-sql-338102.covid_data.covid_deaths` deaths
+
+JOIN
+  `sorting-with-sql-338102.covid_data.covid_vaccination` vaccinations
+  ON
+  deaths.location = vaccinations.location
+  and deaths.date = vaccinations.date
+
+WHERE
+  deaths.continent is not NULL
+
+ORDER BY
+ 1,2,3
 
     ##Total vs Vaccinations
 
